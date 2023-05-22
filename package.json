@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc --noEmit && node dist/script.js",
-    "start": "node dist/script.js",
+    "start": "tsc && node dist/script.js",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/script.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@supabase/supabase-js": "^2.22.0",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^18.16.2",
     "axios": "^1.4.0",
