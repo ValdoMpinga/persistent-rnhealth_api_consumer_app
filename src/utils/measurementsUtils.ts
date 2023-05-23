@@ -1,9 +1,9 @@
 // measurementUtils.ts
 
 import axios from "axios";
-import { Measurement } from './../interfaces/measurement.js'
+import { IMeasurementBody } from "../interfaces/measurementsRequestBodyInterface.js";
 
-export async function fetchMeasurements(requestBody: Measurement) {
+export async function fetchMeasurements(requestBody: IMeasurementBody) {
   const RN_MONITOR_API = axios.create({
     baseURL: "http://62.48.168.89:3000/api",
   });

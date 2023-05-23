@@ -15,7 +15,8 @@ export class SupabaseConnection {
   public static getInstance(
     apiKey: string,
     apiUrl: string
-  ): SupabaseConnection {
+  ): SupabaseConnection
+  {    
     if (!SupabaseConnection.instance) {
       SupabaseConnection.instance = new SupabaseConnection(
         apiKey,
