@@ -39,9 +39,8 @@ class PersistentRnHealthConsumerApp {
     this.app.use(cors());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
-    this.app.listen(process.env.PORT || 3000, () => {
       this.initialize();
-    });
+   ;
     this.biLstmForecastsRepositoryInstance = new Bi_LSTM_ForecastsRepository(
       SupabaseConnection.getInstance(
         process.env.SUPABASE_KEY,
