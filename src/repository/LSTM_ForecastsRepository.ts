@@ -1,6 +1,6 @@
 import { SupabaseConnection } from "../database/SupabaseConnection.js";
-import { IBiLstm } from "../interfaces/BiLstmInterface.js";
-import { SupabaseClient, AuthResponse } from "@supabase/supabase-js";
+import { IBiLstm } from "../interfaces/biLstmInterface.js";
+import { SupabaseClient } from "@supabase/supabase-js";
 import { SupabaseHelper } from "../database/SupabaseHelper.js";
 import { DB_TABLE_NAMES, TABLE_FIELD_NAMES } from "../utils/constants.js";
 
@@ -33,9 +33,10 @@ export class LSTM_ForecastsRepository {
 
     let lastInsertedLstmForecastId =
       await this.subaseHelper.getLastInsertedRecordId(DB_TABLE_NAMES.lstm);
-    let lastInsertedMeasurementId = await this.subaseHelper.getLastInsertedRecordId(
-      DB_TABLE_NAMES.measurements
-    );
+    let lastInsertedMeasurementId =
+      await this.subaseHelper.getLastInsertedRecordId(
+        DB_TABLE_NAMES.measurements
+      );
 
     const { data, error } = await this.supabase
       .from(DB_TABLE_NAMES.lstm)

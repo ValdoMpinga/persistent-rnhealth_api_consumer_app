@@ -1,6 +1,6 @@
 import { SupabaseConnection } from "../database/SupabaseConnection.js";
 import { SupabaseHelper } from "../database/SupabaseHelper.js";
-import { IBiLstm } from "../interfaces/BiLstmInterface.js";
+import { IBiLstm } from "../interfaces/biLstmInterface.js";
 import { SupabaseClient, AuthResponse } from "@supabase/supabase-js";
 import { DB_TABLE_NAMES, TABLE_FIELD_NAMES } from "../utils/constants.js";
 

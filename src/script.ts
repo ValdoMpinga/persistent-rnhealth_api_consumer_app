@@ -27,7 +27,7 @@ class PersistentRnHealthConsumerApp {
   private intervalCounter: number = 1;
   private isFirstForecast: boolean = true;
   private sevenHoursInterval: number = 7 * 60 * 60 * 1000;
-  // private threeMinutesInterval: number = 2 * 60 * 1000;
+  private threeMinutesInterval: number = 2 * 60 * 1000;
 
   //DB instances
   private biLstmForecastsRepositoryInstance: Bi_LSTM_ForecastsRepository;
@@ -77,7 +77,6 @@ class PersistentRnHealthConsumerApp {
     };
 
     try {
-      
       let measurements = await fetchMeasurements(requestBody);
       let filteredData = measurements.filter((measurement) =>
         filterMeasurement(measurement, this.SENSORS[0])
@@ -116,10 +115,15 @@ class PersistentRnHealthConsumerApp {
       try {
         await this.fetchDataAndForecast();
 
+        console.log(
+          "Forecasts re-scheduled to run in 7 hours. Actual time: " + new Date()
+        );
+
         setInterval(async () => {
           await this.fetchDataAndForecast();
-          console.log("Forecasts re-scheduled to run in 6 hours");
-        }, this.sevenHoursInterval);
+          "Forecasts re-scheduled to run in 7 hours. Actual time: " +
+            new Date();
+        }, this.threeMinutesInterval);
       } catch (e) {
         console.log(e);
       }

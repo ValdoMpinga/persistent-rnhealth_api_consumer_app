@@ -1,6 +1,7 @@
 import { SupabaseConnection } from "../database/SupabaseConnection.js";
 import { IMeasurements } from "../interfaces/measurementsInterface.js";
 import { SupabaseClient, AuthResponse } from "@supabase/supabase-js";
+import { DB_TABLE_NAMES, TABLE_FIELD_NAMES } from "../utils/constants.js";
 
 export class MeasurementsRepository {
   private connection: SupabaseConnection;
@@ -28,9 +29,8 @@ export class MeasurementsRepository {
     await this.runInitialize();
 
     try {
-      // Make a query to fetch the last inserted record ID
       const { data, error } = await this.supabase
-        .from("Measurements")
+        .from(DB_TABLE_NAMES.measurements)
         .select("id")
         .order("id", { ascending: false })
         .limit(1);
@@ -40,26 +40,16 @@ export class MeasurementsRepository {
       }
 
       return data[0]?.id;
-
-      // Extract the ID of the last inserted record
     } catch (error) {
       console.error("Error retrieving last inserted record ID:", error.message);
     }
-    // let { data: Bi_LSTM_Forecasts, error } = await this.supabase
-    //   .from("MeasurementsRepository")
-    //   .select("*");
-    // console.log(Bi_LSTM_Forecasts);
-    // console.log(error);
   }
 
   async insertMeasurements(measurements: IMeasurements) {
     await this.runInitialize();
-
-    console.log("inside!!");
-
     try {
       const { data, error } = await this.supabase
-        .from("Measurements")
+        .from(DB_TABLE_NAMES.measurements)
         .insert(measurements);
 
       console.log("\n");
