@@ -11,3 +11,5 @@ export const TABLE_FIELD_NAMES = {
   forecasts: "forecasts",
   real_measurements_id: "real_measurements_id",
 };
+
+export const HOST_IP_ADDRESS = "rnhealthBackendContainer";

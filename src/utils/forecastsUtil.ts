@@ -1,11 +1,12 @@
 // forecastUtils.ts
 
 import axios from "axios";
+import { HOST_IP_ADDRESS } from "./constants.js";
 
 export async function setTargetSensor(sensor_id: string) {
   const RN_HEALTH_FORECASTER_API = axios
     .create({
-      baseURL: "http://localhost:8000",
+      baseURL: `http://${HOST_IP_ADDRESS}:8000`,
     })
     .post("/forecast/target-sensor", {
       targetSensor: sensor_id,
@@ -14,7 +15,7 @@ export async function setTargetSensor(sensor_id: string) {
 
 export async function getLSTMForecast(data) {
   const RN_HEALTH_FORECASTER_API = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: `http://${HOST_IP_ADDRESS}:8000`,
   });
 
   try {
@@ -34,7 +35,7 @@ export async function getLSTMForecast(data) {
 
 export async function getBiLSTMForecast(data) {
   const RN_HEALTH_FORECASTER_API = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: `http://${HOST_IP_ADDRESS}:8000`,
   });
 
   try {
